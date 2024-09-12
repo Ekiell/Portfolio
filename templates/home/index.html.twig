@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block body %}
+    <section class="bg-gray-800 ">
+        <div class="container px-6 py-10 mx-auto">
+
+
+
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+                <!-- Dans nos projets, dans notre table projet -->
+                {% for projets in projet %}
+                <div>
+                    <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="{{ asset('./assets/medias/images/projet/' ~ projets.image) }}" alt="">
+
+                    <div class="mt-8">
+
+
+                        <h1 class="mt-4 text-xl font-semibold text-white ">
+                            {{ projets.titre }}
+                        </h1>
+
+                        <p class="mt-2 text-white ">
+                            {{ projets.description }}
+                        </p>
+
+                        <div class="flex items-center justify-between mt-4">
+                            <div>
+                                <p class="text-lg font-medium text-white">
+                                    Lucky
+                                </p>
+
+                                <p class="text-sm text-white">{{ projets.date|date('Y-m-d') }}</p>
+                            </div>
+
+{#                            <a href="#" class="inline-block text-blue-500 underline hover:text-blue-400">Read more</a>#}
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% if app.user %}
+                    {{ form_start(form) }}
+                        {{ form_label(form.Titre, 'Titre* :') }}
+                        {{ form_widget(form.Titre, {
+                            'attr': {
+                                'class': 'w-1/2 p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500',
+                                'placeholder': 'Entrez un titre ici'
+                            }
+                        }) }}
+
+                        {{ form_widget(form.Description) }}
+
+                        {{ form_widget(form.Date) }}
+
+                        {{ form_widget(form.image) }}
+
+                        {{ form_rest(form) }}
+                    {{ form_end(form) }}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

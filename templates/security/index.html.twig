@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+    <form method="post">
+        <div class="pt-24 min-h-screen flex justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center">
+            <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+            <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+            <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
+                <div class="text-center">
+                    <h2 class="mt-6 text-3xl font-bold text-gray-900">
+                        Content de vous revoir !
+                    </h2>
+                    <p class="mt-2 text-sm text-gray-600">Connectez-vous à votre compte</p>
+                </div>
+                <!--<div class="flex flex-row justify-center items-center space-x-3">
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" x="0" y="0" viewBox="0 0 64 64" xml:space="preserve" class=""><g><g fill-rule="evenodd"><path fill="#deebf5" d="M48 64H16A16 16 0 0 1 0 48V16A16 16 0 0 1 16 0h32a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16" opacity="1" data-original="#deebf5" class=""></path><path fill="#f0faff" d="M30 18h18A9 9 0 0 0 48.92.046C48.614.029 48.311 0 48 0H16A16 16 0 0 0 0 16v32a30 30 0 0 1 30-30" opacity="1" data-original="#f0faff" class=""></path><path fill="#cddceb" d="M48 32a16 16 0 1 0 16 16V16a16 16 0 0 1-16 16" opacity="1" data-original="#cddceb"></path></g><path fill="#1e78ff" d="M52 32.469c0-.779-.036-1.561-.109-2.338a1.996 1.996 0 0 0-1.988-1.804c-3.575-.004-11.718-.004-15.5-.004a2 2 0 0 0-2 2v3.857a2 2 0 0 0 2 2h9.02a9.44 9.44 0 0 1-4.078 6.2v.002a5.096 5.096 0 0 0 5.096 5.096h1.479C49.781 43.925 52 38.677 52 32.469z" opacity="1" data-original="#1e78ff" class=""></path><path fill="#00b450" d="M32.403 52.404a19.528 19.528 0 0 0 13.524-4.926l-6.574-5.098a12.375 12.375 0 0 1-18.398-6.47h-1.531a5.255 5.255 0 0 0-5.254 5.254v.002a20.409 20.409 0 0 0 18.233 11.238z" opacity="1" data-original="#00b450" class=""></path><path fill="#ffb400" d="M20.948 35.91a12.214 12.214 0 0 1 0-7.811v-.002a5.255 5.255 0 0 0-5.254-5.254H14.17a20.427 20.427 0 0 0 0 18.323z" opacity="1" data-original="#ffb400" class=""></path><path fill="#e60014" d="M32.403 19.672a11.106 11.106 0 0 1 6.509 1.982 1.966 1.966 0 0 0 2.548-.2c.915-.868 2.118-2.071 3.066-3.019a2 2 0 0 0-.192-2.998 19.794 19.794 0 0 0-11.931-3.839A20.4 20.4 0 0 0 14.17 22.843l6.778 5.256a12.202 12.202 0 0 1 11.455-8.427z" opacity="1" data-original="#e60014" class=""></path></g></svg>
+                </a>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+                <span class="h-px w-16 bg-gray-300"></span>
+                <span class="text-gray-500 font-normal">OU</span>
+                <span class="h-px w-16 bg-gray-300"></span>
+            </div>-->
+                <form class="mt-8 space-y-6" action="#" method="POST">
+                    <input type="hidden" name="remember" value="true">
+                    <div class="relative">
+                        <label for="email" class="text-sm font-bold text-gray-700 tracking-wide">Email</label>
+                        <input name="email" id="email" class=" w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="email" placeholder="exemple@email.com" value="">
+                    </div>
+
+                    <div class="mt-8 content-center">
+                        <label for="password" class="text-sm font-bold text-gray-700 tracking-wide">
+                            Password
+                        </label>
+                        <input id="password" name="password" class="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="password" placeholder="Mot de passe">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 focus:ring-indigo-400 border-gray-300 rounded">
+                            <label for="remember_me" class="ml-2 block text-sm text-gray-900">
+                                Se souvenir de moi
+                            </label>
+                        </div>
+                        <div class="text-sm flex flex-col items-end">
+                            <a href="" class="font-medium text-indigo-500 hover:text-indigo-700 hover:underline">
+                                Mot de passe oublié ?
+                            </a>
+                            <a href="" class="font-medium text-indigo-500 hover:text-indigo-700 hover:underline">
+                                Impossible de se connecter ?
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center bg-indigo-500 text-gray-100 p-4  rounded-full tracking-wide
+                                font-semibold  focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300">
+                            Se connecter
+                        </button>
+                    </div>
+                    <p class="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500">
+                        Vous n'avez pas de compte ? <a class="text-indigo-500 hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300" href="{{ path('app_register') }}">Créer un compte</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </form>
+{% endblock %}
