@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Addresse{% endblock %}
+
+{% block body %}
+    <ul>
+        {% for address in addresses %}
+            <li>
+                Rue: {{ address.rue }}, Ville: {{ address.city }}, Pays: {{ address.pays }}
+            </li>
+        {% else %}
+            <li>Vous n'avez pas encore d'adresse enregistrée</li>
+        {% endfor %}
+    </ul>
+{{ form_start(form)}}
+    {{ form_end(form) }}
+{% endblock %}

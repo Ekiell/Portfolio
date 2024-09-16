@@ -42,23 +42,23 @@
                 {% endfor %}
 
                 {% if app.user %}
-                    {{ form_start(form) }}
-                        {{ form_label(form.Titre, 'Titre* :') }}
-                        {{ form_widget(form.Titre, {
-                            'attr': {
-                                'class': 'w-1/2 p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500',
-                                'placeholder': 'Entrez un titre ici'
-                            }
-                        }) }}
+{#                    {{ form_start(form) }}#}
+{#                        {{ form_label(form.Titre, 'Titre* :') }}#}
+{#                        {{ form_widget(form.Titre, {#}
+{#                            'attr': {#}
+{#                                'class': 'w-1/2 p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500',#}
+{#                                'placeholder': 'Entrez un titre ici'#}
+{#                            }#}
+{#                        }) }}#}
 
-                        {{ form_widget(form.Description) }}
+{#                        {{ form_widget(form.Description) }}#}
 
-                        {{ form_widget(form.Date) }}
+{#                        {{ form_widget(form.Date) }}#}
 
-                        {{ form_widget(form.image) }}
+{#                        {{ form_widget(form.image) }}#}
 
-                        {{ form_rest(form) }}
-                    {{ form_end(form) }}
+{#                        {{ form_rest(form) }}#}
+{#                    {{ form_end(form) }}#}
                 {% endif %}
             </div>
         </div>

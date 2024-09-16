@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\Projet;
+use App\Form\ContactType;
 use App\Form\ProjetType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,4 +57,39 @@ class HomeController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    // Créer l'entity
+    // Créer le formulaire
+    // Le traité dans ta route de ton controlleur.
+    #[Route('/contact', name: 'app_contact')]
+    public function contact(Request $request, EntityManagerInterface $entityManager, NotifierInterface $notifier)
+    {
+
+        $contact = new Contact();
+        //On accepte les requêtes
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // On persist
+            $entityManager->persist($contact);
+            // On push.
+            $entityManager->flush();
+
+            // Ici on va injecter ton service.
+
+            $this->addFlash('success', 'Formulaire envoyé');
+
+            return $this->redirectToRoute('app_contact');
+        }
+
+        return $this->render('contact/index.html.twig',
+            ['controller_name' => 'ContactController',
+                'contact' => $contact,
+                'form' => $form->createView()
+                ]);
+    }
+
+
 }
